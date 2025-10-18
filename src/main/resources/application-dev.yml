@@ -1,6 +1,6 @@
 debug: true
 jwt:
-  secret: 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
+  secret: ${GOOGLE_SECRET}
   paths:
     -"/login"
     - "/css/**"
@@ -20,8 +20,8 @@ spring:
       client:
         registration:
           google:
-            client-id: 701801122975-2f12oln5eodlq8agitbv4l8hccu6ea7k.apps.googleusercontent.com
-            client-secret: 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
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_SECRET}
             scope:
               - email
               - profile
@@ -45,7 +45,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/dev_app?useSSL=false&serverTimezone=UTC
     username: root
-    password: root
+    password: ${DB_PWD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
     jpa:
