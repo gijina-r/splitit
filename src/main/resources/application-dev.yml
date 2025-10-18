@@ -1,0 +1,90 @@
+debug: true
+jwt:
+  secret: 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
+  paths:
+    -"/login"
+    - "/css/**"
+    - "/js/**"
+    - "/v3/api-docs/**"
+    - "/swagger-ui.html"
+    - "/swagger-ui/**"
+spring:
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
+  security:
+#    user:
+#      name: admin
+#      password: admin
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 701801122975-2f12oln5eodlq8agitbv4l8hccu6ea7k.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+              - openid
+
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://openidconnect.googleapis.com/v1/userinfo
+            user-name-attribute: sub
+
+  server:
+    port: 8080
+  config:
+    activate:
+      on-profile: dev
+  application:
+    name: SplitIt
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/dev_app?useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL8Dialect
+
+   # liquibase:
+    #  enabled: false
+   #   change-log: classpath:db/changelog/db.changelog-master.yaml
+
+
+  doc:
+    api-docs:
+      path: /v3/api-docs
+      enabled: true
+    swagger-ui:
+      path: /swagger-ui.html
+      configUrl: /v3/api-docs/swagger-config
+      url: /v3/api-docs
+      packages-to-scan: com.money.splitit.controller
+      enabled: true
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
