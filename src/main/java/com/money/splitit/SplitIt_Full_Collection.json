@@ -1,0 +1,119 @@
+{
+  "info": {
+    "name": "SplitIt Full API Collection",
+    "_postman_id": "f1c2e3d4-5678-90ab-cdef-1234567890ab",
+    "description": "Complete Postman collection for SplitIt Expense Sharing App (CRUD + Settlement + Google OAuth2)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Get Google OAuth2 Token",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                { "key": "grant_type", "value": "authorization_code", "type": "string" },
+                { "key": "client_id", "value": "<YOUR_CLIENT_ID>", "type": "string" },
+                { "key": "client_secret", "value": "<YOUR_CLIENT_SECRET>", "type": "string" },
+                { "key": "redirect_uri", "value": "http://localhost:8080/login/oauth2/code/google", "type": "string" },
+                { "key": "code", "value": "<AUTH_CODE_FROM_GOOGLE>", "type": "string" }
+              ]
+            },
+            "method": "POST",
+            "url": { "raw": "https://oauth2.googleapis.com/token", "protocol": "https", "host": ["oauth2","googleapis","com"], "path": ["token"] }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Current User Info",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "<ACCESS_TOKEN>", "type": "string" } ] },
+            "method": "GET",
+            "url": { "raw": "http://localhost:8080/api/users/me", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","users","me"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User APIs",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "<ACCESS_TOKEN>", "type": "string" } ] },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"username\": \"gijina\",\n  \"email\": \"gijina@example.com\",\n  \"password\": \"password123\"\n}" },
+            "url": { "raw": "http://localhost:8080/api/users", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","users"] }
+          }
+        },
+        {
+          "name": "Get All Users",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:8080/api/users", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","users"] } }
+        },
+        {
+          "name": "Get User by ID",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:8080/api/users/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","users","1"] } }
+        }
+      ]
+    },
+    {
+      "name": "Group APIs",
+      "item": [
+        {
+          "name": "Create Group",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "<ACCESS_TOKEN>", "type": "string" } ] },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Dubai Trip\",\n  \"members\": [1, 2, 3]\n}" },
+            "url": { "raw": "http://localhost:8080/api/groups", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","groups"] }
+          }
+        },
+        {
+          "name": "Get All Groups",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:8080/api/groups", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","groups"] } }
+        },
+        {
+          "name": "Get Group by ID",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:8080/api/groups/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","groups","1"] } }
+        }
+      ]
+    },
+    {
+      "name": "Expense APIs",
+      "item": [
+        {
+          "name": "Create Expense",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "<ACCESS_TOKEN>", "type": "string" } ] },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"description\": \"Hotel Booking\",\n  \"amount\": 300.0,\n  \"date\": \"2025-10-19T10:00:00Z\",\n  \"paidBy\": 1,\n  \"groupId\": 1,\n  \"splitBetween\": [1, 2, 3]\n}" },
+            "url": { "raw": "http://localhost:8080/api/expenses", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","expenses"] }
+          }
+        },
+        {
+          "name": "Get Expenses by Group",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:8080/api/expenses/group/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","expenses","group","1"] } }
+        }
+      ]
+    },
+    {
+      "name": "Settlement APIs",
+      "item": [
+        {
+          "name": "Calculate Settlement (Java Logic)",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:8080/api/settlement/group/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","settlement","group","1"] } }
+        },
+        {
+          "name": "Calculate Settlement (DB Procedure)",
+          "request": { "method": "GET", "url": { "raw": "http://localhost:8080/api/settlement/db/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api","settlement","db","1"] } }
+        }
+      ]
+    }
+  ]
+}
