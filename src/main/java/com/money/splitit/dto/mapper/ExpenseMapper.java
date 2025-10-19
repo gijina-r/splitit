@@ -7,25 +7,37 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExpenseMapper {
 
-    public ExpenseDTO toDTO(Expense expense) {
-        ExpenseDTO dto = new ExpenseDTO();
-        dto.setId(expense.getId());
-        dto.setDescription(expense.getDescription());
-        dto.setAmount(expense.getAmount());
-        dto.setDate(expense.getDate());
-        dto.setPayerId(expense.getPayer().getId());
-        dto.setPayerName(expense.getPayer().getUsername());
-        dto.setGroupId(expense.getGroup().getId());
-        dto.setGroupName(expense.getGroup().getName());
-        return dto;
+    // Convert DTO to Entity
+    public Expense toEntity(ExpenseDTO dto) {
+        if (dto == null) return null;
+
+        Expense entity = new Expense();
+        entity.setId(dto.getId());
+        entity.setDescription(dto.getDescription());
+        entity.setAmount(dto.getAmount());
+        entity.setDate(dto.getDate());
+        entity.setPayer(dto.getPayer());
+        //entity.setGroupName(dto.getGroup());
+        //entity.setPaidBy(dto.getPaidBy());
+       //10190 entity.setSplitBetween(dto.getSplitBetween());
+
+        return entity;
     }
 
-    public Expense toEntity(ExpenseDTO dto) {
-        Expense expense = new Expense();
-        expense.setId(dto.getId());
-        expense.setDescription(dto.getDescription());
-        expense.setAmount(dto.getAmount());
-        expense.setDate(dto.getDate());
-        return expense;
+    // Convert Entity to DTO
+    public ExpenseDTO toDTO(Expense entity) {
+        if (entity == null) return null;
+
+        ExpenseDTO dto = new ExpenseDTO();
+        dto.setId(entity.getId());
+        dto.setDescription(entity.getDescription());
+        dto.setAmount(entity.getAmount());
+        dto.setDate(entity.getDate());
+        dto.setPayer(entity.getPayer());
+        //dto.setGroup(entity.getGroupName());
+        //dto.setPaidBy(entity.getPaidBy());
+        //10000october---dto.setSplitBetween(entity.getSplitBetween());
+
+        return dto;
     }
 }

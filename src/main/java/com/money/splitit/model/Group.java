@@ -3,6 +3,7 @@ package com.money.splitit.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,16 +16,22 @@ public class Group {
 
     private String name;
 
-    @ManyToMany
+   /* @ManyToMany
     @JoinTable(
             name = "user_group",
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private Set<User> members;
+    )*/
+    //private Set<User> members;
 
-    @OneToMany(mappedBy = "group")
-    private Set<Expense> expenses;
+   // @OneToMany(mappedBy = "group")
+   // private Set<Expense> expenses;
+
+    @ElementCollection
+    private List<String> members;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Expense> expenses;
 
     // Constructors, getters, and setters
 }

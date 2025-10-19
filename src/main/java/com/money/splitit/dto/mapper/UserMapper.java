@@ -5,6 +5,9 @@ import com.money.splitit.model.Group;
 import com.money.splitit.model.User;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -16,7 +19,13 @@ public class UserMapper {
         dto.setUsername(user.getUsername());
         dto.setEmail(user.getEmail());
         dto.setGroupIds(user.getGroups().stream().map(Group::getId).collect(Collectors.toSet()));
-        dto.setGroupNames(user.getGroups().stream().map(Group::getName).collect(Collectors.toSet()));
+        dto.setGroupNames(
+
+                        user.getGroups() != null
+                                ? new HashSet<>(user.getGroups()):null
+
+        );
+
         return dto;
     }
 

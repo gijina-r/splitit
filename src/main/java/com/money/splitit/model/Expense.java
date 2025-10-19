@@ -28,9 +28,15 @@ public class Expense {
     private Group group;
 
 
+    //@ManyToOne
     @ManyToOne
+    @JoinColumn(name = "paid_by_id")
     private User paidBy;
-
-    @ManyToMany
-    private List<User> splitBetween;
+    /*@ManyToMany
+    @JoinTable(
+            name = "settlements",
+            joinColumns = @JoinColumn(name = "expense_id"),
+            inverseJoinColumns = @JoinColumn(name = "payer_id")
+    )
+    private List<String> splitBetween;*/
 }

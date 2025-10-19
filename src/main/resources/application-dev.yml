@@ -1,6 +1,6 @@
 debug: true
 jwt:
-  secret: ${GOOGLE_SECRET}
+  secret: YmFzZTY0U2VjdXJlS2V5QmFzZTY0U2VjdXJlS2V5QmFzZTY0U2VjdXJlS2V5
   paths:
     -"/login"
     - "/css/**"
@@ -26,11 +26,12 @@ spring:
               - email
               - profile
               - openid
-
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
         provider:
           google:
             authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
             token-uri: https://oauth2.googleapis.com/token
+
             user-info-uri: https://openidconnect.googleapis.com/v1/userinfo
             user-name-attribute: sub
 

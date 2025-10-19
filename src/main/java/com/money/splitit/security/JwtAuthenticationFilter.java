@@ -1,27 +1,53 @@
 package com.money.splitit.security;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
+
+
+import com.money.splitit.util.JwtUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
-import org.springframework.security.core.context.SecurityContextImpl;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
-import javax.crypto.SecretKey;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
+import java.util.Collections;
 
+@Slf4j
 @Component
 public class JwtAuthenticationFilter implements WebFilter {
 
-    @Value("${jwt.secret}")
+
+    @Override
+    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+        String authHeader = exchange.getRequest().getHeaders().getFirst("Authorization");
+
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return chain.filter(exchange);
+        }
+
+        String token = authHeader.substring(7);
+        System.out.println("Token found: " + token);
+        try {
+            String email = JwtUtil.validateTokenAndGetSubject(token);
+            Authentication authentication = new UsernamePasswordAuthenticationToken(
+                    new User(email, "", Collections.emptyList()), null, Collections.emptyList());
+
+            return chain.filter(exchange)
+                    .contextWrite(ReactiveSecurityContextHolder.withAuthentication(authentication));
+
+        } catch (Exception e) {
+            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+            return exchange.getResponse().setComplete();
+        }
+    }
+}
+
+   /* @Value("${jwt.secret}")
     private String secret;
     @Value("${jwt.paths}")
     private List<String> paths;
@@ -37,7 +63,7 @@ public class JwtAuthenticationFilter implements WebFilter {
             return chain.filter(exchange);
         }
         if (token == null || token.isEmpty()) {
-            System.out.println("no token present");
+            log.info("no token present");
             return chain.filter(exchange); // or return 401 depending on endpoint
         }
 
@@ -53,5 +79,5 @@ public class JwtAuthenticationFilter implements WebFilter {
             exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
             return exchange.getResponse().setComplete();
         }
-    }
-}
+    }*/
+

@@ -4,9 +4,13 @@ import com.money.splitit.model.User;
 import com.money.splitit.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
@@ -14,9 +18,19 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        return ResponseEntity.ok(userService.createUser(user));
+    @PostMapping("/profile")
+    public Mono<ResponseEntity<User>> createUser(@RequestBody User user) {
+        System.out.println("Received user: " + user.getUsername());
+        if (user.getGroups() != null) {
+            user.getGroups().forEach(group ->
+                    System.out.println("Group: " + group.getName())
+            );
+        }
+        return Mono.just(ResponseEntity.ok(user));
+    }
+    @GetMapping("/profile")
+    public Mono<ResponseEntity<String>> getProfile() {
+        return Mono.just(ResponseEntity.ok("User profile"));
     }
 
     @GetMapping("/{id}")
@@ -28,10 +42,10 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping
+    /*@GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
-    }
+    }*/
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
