@@ -27,6 +27,7 @@ public class SettlementController {
     public Mono<List<String>> getSettlement(@PathVariable Long groupId) {
         List<Expense> expenses = expenseRepository.findByGroupId(groupId);
         System.out.println("expenses details "+expenses);
+        //return Mono.just(expenses);
         return Mono.just(settlementService.calculateSettlement(expenses));
     }
 }

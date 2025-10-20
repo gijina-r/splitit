@@ -45,6 +45,8 @@ public class ExpenseService {
                 .map(u -> userRepository.findById(u.getId())
                         .orElseThrow(() -> new RuntimeException("User not found: " + u.getId())))
                 .collect(Collectors.toSet());
+        System.out.println("splitusers"+splitUsers);
+
         expense.setSplitBetween(splitUsers);
 
         // Resolve payer
