@@ -4,16 +4,18 @@ import com.money.splitit.model.User;
 import com.money.splitit.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class UserService {
     @Autowired
     private UserRepository userRepository;
 
     public User createUser(User user) {
-        return userRepository.save(user);
+        return this.userRepository.save(user);
     }
 
     public User getUserById(Long id) {

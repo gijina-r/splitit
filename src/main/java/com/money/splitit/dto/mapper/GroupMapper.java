@@ -26,6 +26,7 @@ public class GroupMapper {
         entity.setId(dto.getId());
         entity.setName(dto.getName());
         entity.setMembers(dto.getMembers());
+        entity.setDescription(dto.getDescription());
 
         List<Expense> expenses = null;
         if (dto.getExpenses() != null) {

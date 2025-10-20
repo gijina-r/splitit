@@ -141,7 +141,7 @@ INSERT INTO users (username, email, password) VALUES
 INSERT INTO groups (name) VALUES ('Dubai Trip');
 
 -- GROUP MEMBERS
-INSERT INTO group_members (group_id, user_id) VALUES
+INSERT INTO group_users (group_id, user_id) VALUES
 (1,1),(1,2),(1,3);
 
 -- EXPENSES

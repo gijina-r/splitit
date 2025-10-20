@@ -5,6 +5,7 @@ import com.money.splitit.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -15,33 +16,34 @@ public class GroupController {
     private GroupService groupService;
 
     @PostMapping
-    public ResponseEntity<Group> createGroup(@RequestBody Group group) {
-        return ResponseEntity.ok(groupService.createGroup(group));
+    public Mono<ResponseEntity<Group>> createGroup(@RequestBody Group group) {
+        this.groupService.createGroup(group);
+        return Mono.just(ResponseEntity.ok(group));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Group> getGroupById(@PathVariable Long id) {
+    public Mono<ResponseEntity<Group>> getGroupById(@PathVariable Long id) {
         Group group = groupService.getGroupById(id);
         if (group != null) {
-            return ResponseEntity.ok(group);
+            return Mono.just(ResponseEntity.ok(group));
         }
-        return ResponseEntity.notFound().build();
+        return Mono.just(ResponseEntity.notFound().build());
     }
 
     @GetMapping
-    public ResponseEntity<List<Group>> getAllGroups() {
-        return ResponseEntity.ok(groupService.getAllGroups());
+    public Mono<ResponseEntity<List<Group>>> getAllGroups() {
+        return Mono.just(ResponseEntity.ok(groupService.getAllGroups()));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Group> updateGroup(@PathVariable Long id, @RequestBody Group group) {
+    public Mono<ResponseEntity<Group>> updateGroup(@PathVariable Long id, @RequestBody Group group) {
         group.setId(id);
-        return ResponseEntity.ok(groupService.updateGroup(group));
+        return Mono.just(ResponseEntity.ok(groupService.updateGroup(group)));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteGroup(@PathVariable Long id) {
+    public Mono<ResponseEntity<Void>> deleteGroup(@PathVariable Long id) {
         groupService.deleteGroup(id);
-        return ResponseEntity.ok().build();
+        return Mono.just(ResponseEntity.ok().build());
     }
 }

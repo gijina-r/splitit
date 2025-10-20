@@ -1,8 +1,11 @@
 package com.money.splitit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -16,22 +19,27 @@ public class Group {
 
     private String name;
 
-   /* @ManyToMany
-    @JoinTable(
-            name = "user_group",
-            joinColumns = @JoinColumn(name = "group_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )*/
-    //private Set<User> members;
+    private String description;
 
-   // @OneToMany(mappedBy = "group")
-   // private Set<Expense> expenses;
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ToString.Exclude
+    private Set<User> members;
 
-    @ElementCollection
+
+
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ToString.Exclude
+    private List<Expense> expenses= new ArrayList<>();
+
+    //@OneToMany(mappedBy = "group",fetch = FetchType.EAGER)
+   // private Set<Expense> expense;
+
+   /* @ElementCollection
     private List<String> members;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Expense> expenses;
+    */
 
     // Constructors, getters, and setters
 }

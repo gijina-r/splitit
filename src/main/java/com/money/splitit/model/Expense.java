@@ -1,11 +1,14 @@
 package com.money.splitit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -19,24 +22,26 @@ public class Expense {
     private Double amount;
     private LocalDateTime date;
 
-    @ManyToOne
-    @JoinColumn(name = "payer_id")
-    private User payer;
 
-    @ManyToOne
+
+
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST},fetch = FetchType.EAGER)
     @JoinColumn(name = "group_id")
     private Group group;
 
+    @Column(name = "payer_id", insertable = false, updatable = false)
+    private Long payerId; // ✅ read-only mirror of foreign key
 
-    //@ManyToOne
-    @ManyToOne
-    @JoinColumn(name = "paid_by_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "payer_id")
     private User paidBy;
-    /*@ManyToMany
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "settlements",
+            name = "expense_splits",
             joinColumns = @JoinColumn(name = "expense_id"),
-            inverseJoinColumns = @JoinColumn(name = "payer_id")
+            inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private List<String> splitBetween;*/
+    private Set<User> splitBetween = new HashSet<>();
 }

@@ -28,7 +28,7 @@ public class DebtCalculator {
 
         // Calculate balances
         for (Expense expense : expenses) {
-            User payer = expense.getPayer();
+            User payer = expense.getPaidBy();
             Double amount = expense.getAmount();
             BigDecimal amountVal = new BigDecimal(expense.getAmount());
             BigDecimal splitAmount = amountVal.divide(BigDecimal.valueOf(users.size()), 2, RoundingMode.HALF_UP);

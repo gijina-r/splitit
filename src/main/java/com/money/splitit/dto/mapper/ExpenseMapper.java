@@ -16,10 +16,10 @@ public class ExpenseMapper {
         entity.setDescription(dto.getDescription());
         entity.setAmount(dto.getAmount());
         entity.setDate(dto.getDate());
-        entity.setPayer(dto.getPayer());
-        //entity.setGroupName(dto.getGroup());
-        //entity.setPaidBy(dto.getPaidBy());
-       //10190 entity.setSplitBetween(dto.getSplitBetween());
+        entity.setPayerId(dto.getPayerId());
+        entity.setGroup(dto.getGroup());
+        entity.setPaidBy(dto.getPaidBy());
+       entity.setSplitBetween(dto.getSplitBetween());
 
         return entity;
     }
@@ -33,10 +33,10 @@ public class ExpenseMapper {
         dto.setDescription(entity.getDescription());
         dto.setAmount(entity.getAmount());
         dto.setDate(entity.getDate());
-        dto.setPayer(entity.getPayer());
-        //dto.setGroup(entity.getGroupName());
-        //dto.setPaidBy(entity.getPaidBy());
-        //10000october---dto.setSplitBetween(entity.getSplitBetween());
+        dto.setPaidBy(entity.getPaidBy());
+         dto.setGroup(entity.getGroup());
+         dto.setPayerId(entity.getPayerId());
+         dto.setSplitBetween(entity.getSplitBetween());
 
         return dto;
     }

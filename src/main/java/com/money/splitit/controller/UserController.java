@@ -18,44 +18,36 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/profile")
+    @PostMapping
     public Mono<ResponseEntity<User>> createUser(@RequestBody User user) {
-        System.out.println("Received user: " + user.getUsername());
-        if (user.getGroups() != null) {
-            user.getGroups().forEach(group ->
-                    System.out.println("Group: " + group.getName())
-            );
-        }
+        this.userService.createUser(user);
         return Mono.just(ResponseEntity.ok(user));
     }
-    @GetMapping("/profile")
-    public Mono<ResponseEntity<String>> getProfile() {
-        return Mono.just(ResponseEntity.ok("User profile"));
-    }
+
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+    public Mono<ResponseEntity<User>> getUserById(@PathVariable Long id) {
         User user = userService.getUserById(id);
         if (user != null) {
-            return ResponseEntity.ok(user);
+          return Mono.just(ResponseEntity.ok(user));
         }
-        return ResponseEntity.notFound().build();
+        return Mono.just(ResponseEntity.notFound().build());
     }
 
-    /*@GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        return ResponseEntity.ok(userService.getAllUsers());
-    }*/
+    @GetMapping
+    public Mono<ResponseEntity<List<User>>> getAllUsers() {
+        return Mono.just(ResponseEntity.ok(userService.getAllUsers()));
+    }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+    public Mono<ResponseEntity<User>> updateUser(@PathVariable Long id, @RequestBody User user) {
         user.setId(id);
-        return ResponseEntity.ok(userService.updateUser(user));
+        return Mono.just(ResponseEntity.ok(userService.updateUser(user)));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public Mono<ResponseEntity<Void>> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
-        return ResponseEntity.ok().build();
+        return Mono.just(ResponseEntity.ok().build());
     }
 }
