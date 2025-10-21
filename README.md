@@ -4,6 +4,9 @@
 SplitIt is a **Spring Boot WebFlux application** for managing shared expenses among users and groups.  
 It supports **user registration, group management, expense tracking, and settlement calculation**.  
 OAuth2 (Google login) is integrated to authenticate users.
+
+<img width="1556" height="2582" alt="Untitled diagram-2025-10-21-035927" src="https://github.com/user-attachments/assets/d02c2cdd-0813-41db-ab91-8315d4824dc8" />
+
 ![img.png](img.png)
 ---
 ---
