@@ -7,7 +7,7 @@ OAuth2 (Google login) is integrated to authenticate users.
 ---------------------------------------------------------------------------------------------------------
 Getting Started
 Clone the repository:
-git clone https://github.com/yourusername/splitkro.git
+git clone https://github.com/yourusername/splitit.git
 Navigate to the project directory:
 cd splitit
 Build the project:
@@ -21,12 +21,12 @@ http://localhost:8080/webjars/swagger-ui/index.html
 HIGH LEVEL DESING (HDL)
 ------------------------------------------------------------------------------------------------------------
 1. High-level components
- API Gateway — validates JWTs (or delegates to Auth Service), rate-limits, and routes requests.
-Auth Service / OAuth2 Integration — uses Google OAuth2 to authenticate users and issue application JWTs.
-User Service — user profile, roles, preferences.
-Group Service — create/manage groups and membership.
-Expense Service — CRUD for expenses; split logic; compute share per user.
-Settlement / Transaction Service — record payments, update balances atomically.
+ -API Gateway — validates JWTs (or delegates to Auth Service), rate-limits, and routes requests.
+ -Auth Service / OAuth2 Integration — uses Google OAuth2 to authenticate users and issue application JWTs.
+ -User Service — user profile, roles, preferences.
+ -Group Service — create/manage groups and membership.
+ -Expense Service — CRUD for expenses; split logic; compute share per user.
+ -Settlement / Transaction Service — record payments, update balances atomically.
 DB — relational DB for core data; Redis for caches; optional event bus for async tasks.
 
 <img width="3204" height="1804" alt="image" src="https://github.com/user-attachments/assets/3eb1d026-433b-4535-bc25-abd2b8f9c694" />
