@@ -4,6 +4,9 @@
 SplitIt is a **Spring Boot WebFlux application** for managing shared expenses among users and groups.  
 It supports **user registration, group management, expense tracking, and settlement calculation**.  
 OAuth2 (Google login) is integrated to authenticate users.
+REST API DOCS:
+http://localhost:8080/webjars/swagger-ui/index.html
+
 ![img.png](img.png)
 ---
 ---
@@ -209,3 +212,5 @@ INSERT INTO expense_split (expense_id, user_id) VALUES
 ```
 
 ... (rest of README omitted for brevity, include the full text from previous step)
+
+
