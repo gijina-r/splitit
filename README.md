@@ -4,8 +4,59 @@
 SplitIt is a **Spring Boot WebFlux application** for managing shared expenses among users and groups.  
 It supports **user registration, group management, expense tracking, and settlement calculation**.  
 OAuth2 (Google login) is integrated to authenticate users.
-
+![img.png](img.png)
 ---
+---
+config:
+layout: dagre
+---
+erDiagram
+USER ||..|{ GROUP_USER : "part of"
+USER{
+int id
+string         username
+string email
+string password_hash
+timestamp created_at
+timestamp updated_at
+timestamp update_user_modtime
+
+    }
+    GROUP_USER{
+       int id
+       string name
+       string description
+    string created_by
+       timestamp created_at
+        timestamp updated_at
+        timestamp update_group_modtime
+    }
+
+    USER ||--|{ EXPENSES : places
+    EXPENSES{
+        int id
+        int  group_id
+        int payer_id
+        double amount
+        string description
+        date date
+        timestamp created_at
+        timestamp updated_at
+        int category_id
+        timestamp update_expense_modtime
+    }
+
+    USER }|--|{ EXPENSE_SPLITS : "liable for"
+    EXPENSE_SPLITS{
+        int id
+        int expense_id
+        int user_id
+        int group_id
+        timestamp created_at
+        timestamp updated_at
+    }
+     GROUP_USER }|--|{ EXPENSE_SPLITS : "liable for"
+    GROUP_USER ||--|{ EXPENSES : "part of"
 
 ## 🧱 Database Setup (MySQL)
 
@@ -141,7 +192,7 @@ INSERT INTO users (username, email, password) VALUES
 INSERT INTO groups (name) VALUES ('Dubai Trip');
 
 -- GROUP MEMBERS
-INSERT INTO group_members (group_id, user_id) VALUES
+INSERT INTO group_users (group_id, user_id) VALUES
 (1,1),(1,2),(1,3);
 
 -- EXPENSES
