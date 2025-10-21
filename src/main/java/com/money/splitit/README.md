@@ -9,7 +9,7 @@ REST API DOCS:
 http://localhost:8080/webjars/swagger-ui/index.html
 -------------------------------------------------------------------------------------------------------
 HIGH LEVEL DESING (HDL)
-<img width="1344" height="768" alt="Gemini_Generated_Image_yuup1iyuup1iyuup" src="https://github.com/user-attachments/assets/cf7a0fae-1f61-4c73-b2df-2a2773aa8fc8" />
+<img width="3204" height="1804" alt="image" src="https://github.com/user-attachments/assets/3eb1d026-433b-4535-bc25-abd2b8f9c694" />
 
 
 
