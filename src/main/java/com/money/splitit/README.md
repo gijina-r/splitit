@@ -10,11 +10,24 @@ http://localhost:8080/webjars/swagger-ui/index.html
 ------------------------------------------------------------------------------------------------------------
 HIGH LEVEL DESING (HDL)
 -------------------------------------------------------------------------------------------------------
+1. High-level components
+API Gateway — validates JWTs (or delegates to Auth Service), rate-limits, and routes requests.
+Auth Service / OAuth2 Integration — uses Google OAuth2 to authenticate users and issue application JWTs.
+User Service — user profile, roles, preferences.
+Group Service — create/manage groups and membership.
+Expense Service — CRUD for expenses; split logic; compute share per user.
+Settlement / Transaction Service — record payments, update balances atomically.
+DB — relational DB for core data; Redis for caches; optional event bus for async tasks.
 
+DB — relational DB for core data; Redis for caches; optional event bus for async tasks.
 <img width="3204" height="1804" alt="image" src="https://github.com/user-attachments/assets/3eb1d026-433b-4535-bc25-abd2b8f9c694" />
 ------------------------------------------------------------------------------------------------------------
-LOW LEVEL DESING (HDL)
+LOW LEVEL DESING (LLD)
 -------------------------------------------------------------------------------------------------------
+Scope: Backend LLD for an expense-sharing application with Google OAuth2 login, role-based security (USER, ADMIN), groups, expenses, balances, and settlement transactions. Tech stack assumed: Java 17+, Spring Boot (WebFlux or WebMVC), Spring Security (OAuth2 + JWT), JPA/Hibernate, MySQL (or Postgres), Redis (optional cache), and RabbitMQ/Kafka (optional async settlement/notifications).
+
+<img width="1444" height="1564" alt="image" src="https://github.com/user-attachments/assets/c4ba719f-3f53-4c18-9250-0bc1541e76cf" />
+
 ------------------------------------------------------------------------------------------------------------
 ER DIAGRAM
 -------------------------------------------------------------------------------------------------------
