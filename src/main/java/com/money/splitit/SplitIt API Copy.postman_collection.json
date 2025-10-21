@@ -1,0 +1,1303 @@
+{
+	"info": {
+		"_postman_id": "40307ad9-9b56-4b1a-b4e5-037ece6c4355",
+		"name": "SplitIt API Copy",
+		"description": "API for SplitIt expense sharing application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "get User By Id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/users/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-54199750",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/users/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"users",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "-54199750",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "update User",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 33283153,\n  \"username\": \"enim\",\n  \"email\": \"dolor mollit\",\n  \"password_hash\": \"cillum sit esse quis\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/users/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-54199750",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": 33283153,\n  \"username\": \"enim\",\n  \"email\": \"dolor mollit\",\n  \"password_hash\": \"cillum sit esse quis\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/users/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"users",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "-54199750",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "delete User",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/users/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-54199750",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/users/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"users",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "-54199750",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "get All Users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/users",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "create User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": 33283153,\n  \"username\": \"enim\",\n  \"email\": \"dolor mollit\",\n  \"password_hash\": \"cillum sit esse quis\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 33283153,\n  \"username\": \"enim\",\n  \"email\": \"dolor mollit\",\n  \"password_hash\": \"cillum sit esse quis\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/users",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"users"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "groups",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "get Group By Id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/groups/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"groups",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-54199750",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/groups/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"groups",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "-54199750",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "update Group",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": -11449313,\n  \"name\": \"ipsum nulla esse\",\n  \"description\": \"do ullamco\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/groups/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"groups",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-54199750",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": -11449313,\n  \"name\": \"ipsum nulla esse\",\n  \"description\": \"do ullamco\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/groups/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"groups",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "-54199750",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "delete Group",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/groups/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"groups",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-54199750",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/groups/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"groups",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "-54199750",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "get All Groups",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/groups",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"groups"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/groups",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"groups"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "create Group",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": -11449313,\n  \"name\": \"ipsum nulla esse\",\n  \"description\": \"do ullamco\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/groups",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"groups"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": -11449313,\n  \"name\": \"ipsum nulla esse\",\n  \"description\": \"do ullamco\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/groups",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"groups"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "expenses",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "get Expense By Id",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/expenses/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"expenses",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-54199750",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/expenses/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"expenses",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "-54199750",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "update Expense",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": -43503750,\n  \"description\": \"laborum dolor Ut aliquip anim\",\n  \"amount\": -81272854.66458471,\n  \"date\": \"1960-08-11T10:13:18.600Z\",\n  \"group\": {\n    \"id\": -19509684,\n    \"name\": \"exercitation ut\",\n    \"description\": \"Duis consectetur\"\n  },\n  \"payerId\": -33419203,\n  \"paidBy\": {\n    \"id\": -87352638,\n    \"username\": \"amet voluptate anim in Ut\",\n    \"email\": \"minim in ea cillum\",\n    \"password_hash\": \"sunt amet\"\n  },\n  \"splitBetween\": [\n    {\n      \"id\": -52809660,\n      \"username\": \"nulla velit nostrud\",\n      \"email\": \"sint ex ipsum\",\n      \"password_hash\": \"non magna aliqua aliquip\"\n    },\n    {\n      \"id\": 29924729,\n      \"username\": \"dolore ad sunt\",\n      \"email\": \"esse quis non\",\n      \"password_hash\": \"deserunt \"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/expenses/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"expenses",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-54199750",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": -43503750,\n  \"description\": \"laborum dolor Ut aliquip anim\",\n  \"amount\": -81272854.66458471,\n  \"date\": \"1960-08-11T10:13:18.600Z\",\n  \"group\": {\n    \"id\": -19509684,\n    \"name\": \"exercitation ut\",\n    \"description\": \"Duis consectetur\"\n  },\n  \"payerId\": -33419203,\n  \"paidBy\": {\n    \"id\": -87352638,\n    \"username\": \"amet voluptate anim in Ut\",\n    \"email\": \"minim in ea cillum\",\n    \"password_hash\": \"sunt amet\"\n  },\n  \"splitBetween\": [\n    {\n      \"id\": -52809660,\n      \"username\": \"nulla velit nostrud\",\n      \"email\": \"sint ex ipsum\",\n      \"password_hash\": \"non magna aliqua aliquip\"\n    },\n    {\n      \"id\": 29924729,\n      \"username\": \"dolore ad sunt\",\n      \"email\": \"esse quis non\",\n      \"password_hash\": \"deserunt \"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/expenses/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"expenses",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "-54199750",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "delete Expense",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/expenses/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"expenses",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-54199750",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/expenses/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"expenses",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "-54199750",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "get All Expenses",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/expenses",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"expenses"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/expenses",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"expenses"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "create Expense",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": -43503750,\n  \"description\": \"laborum dolor Ut aliquip anim\",\n  \"amount\": -81272854.66458471,\n  \"date\": \"1960-08-11T10:13:18.600Z\",\n  \"group\": {\n    \"id\": -19509684,\n    \"name\": \"exercitation ut\",\n    \"description\": \"Duis consectetur\"\n  },\n  \"payerId\": -33419203,\n  \"paidBy\": {\n    \"id\": -87352638,\n    \"username\": \"amet voluptate anim in Ut\",\n    \"email\": \"minim in ea cillum\",\n    \"password_hash\": \"sunt amet\"\n  },\n  \"splitBetween\": [\n    {\n      \"id\": -52809660,\n      \"username\": \"nulla velit nostrud\",\n      \"email\": \"sint ex ipsum\",\n      \"password_hash\": \"non magna aliqua aliquip\"\n    },\n    {\n      \"id\": 29924729,\n      \"username\": \"dolore ad sunt\",\n      \"email\": \"esse quis non\",\n      \"password_hash\": \"deserunt \"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/expenses",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"expenses"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": -43503750,\n  \"description\": \"laborum dolor Ut aliquip anim\",\n  \"amount\": -81272854.66458471,\n  \"date\": \"1960-08-11T10:13:18.600Z\",\n  \"group\": {\n    \"id\": -19509684,\n    \"name\": \"exercitation ut\",\n    \"description\": \"Duis consectetur\"\n  },\n  \"payerId\": -33419203,\n  \"paidBy\": {\n    \"id\": -87352638,\n    \"username\": \"amet voluptate anim in Ut\",\n    \"email\": \"minim in ea cillum\",\n    \"password_hash\": \"sunt amet\"\n  },\n  \"splitBetween\": [\n    {\n      \"id\": -52809660,\n      \"username\": \"nulla velit nostrud\",\n      \"email\": \"sint ex ipsum\",\n      \"password_hash\": \"non magna aliqua aliquip\"\n    },\n    {\n      \"id\": 29924729,\n      \"username\": \"dolore ad sunt\",\n      \"email\": \"esse quis non\",\n      \"password_hash\": \"deserunt \"\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/expenses",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"expenses"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "get Expenses By Payer Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/expenses/payer/:payerId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"expenses",
+										"payer",
+										":payerId"
+									],
+									"variable": [
+										{
+											"key": "payerId",
+											"value": "-54199750",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/expenses/payer/:payerId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"expenses",
+												"payer",
+												":payerId"
+											],
+											"variable": [
+												{
+													"key": "payerId",
+													"value": "-54199750",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "get Expenses By Group Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/expenses/group/:groupId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"expenses",
+										"group",
+										":groupId"
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "-54199750",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/expenses/group/:groupId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"expenses",
+												"group",
+												":groupId"
+											],
+											"variable": [
+												{
+													"key": "groupId",
+													"value": "-54199750",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get Settlement",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/settlement/group/:groupId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"settlement",
+								"group",
+								":groupId"
+							],
+							"variable": [
+								{
+									"key": "groupId",
+									"value": "-54199750",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/settlement/group/:groupId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"settlement",
+										"group",
+										":groupId"
+									],
+									"variable": [
+										{
+											"key": "groupId",
+											"value": "-54199750",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
