@@ -4,7 +4,17 @@
 SplitIt is a **Spring Boot WebFlux application** for managing shared expenses among users and groups.  
 It supports **user registration, group management, expense tracking, and settlement calculation**.  
 OAuth2 (Google login) is integrated to authenticate users.
---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
+Getting Started
+Clone the repository:
+git clone https://github.com/yourusername/splitkro.git
+Navigate to the project directory:
+cd splitit
+Build the project:
+mvn clean install
+Run the application:
+mvn spring-boot:run
+---------------------------------------------------------------------------------------------------------
 REST API DOCS:
 http://localhost:8080/webjars/swagger-ui/index.html
 ------------------------------------------------------------------------------------------------------------
@@ -26,7 +36,14 @@ LOW LEVEL DESING (LLD)
 Scope: Backend LLD for an expense-sharing application with Google OAuth2 login, role-based security (USER, ADMIN), groups, expenses, balances, and settlement transactions. Tech stack assumed: Java 17+, Spring Boot (WebFlux or WebMVC), Spring Security (OAuth2 + JWT), JPA/Hibernate, MySQL (or Postgres), Redis (optional cache), and RabbitMQ/Kafka (optional async settlement/notifications).
 
 <img width="1444" height="1564" alt="image" src="https://github.com/user-attachments/assets/c4ba719f-3f53-4c18-9250-0bc1541e76cf" />
+---------------------------------------------------------------------------------------------------------------------------------
+This application uses MYSQL. The database connection is configured in the application.properties file:
 
+spring.datasource.url=jdbc:mysql://localhost:3306/dev_app?useSSL=false&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=[YOUR-PASSWORD]
+
+Make sure to replace [YOUR-PASSWORD] with your actual MYSQL database password.
 ------------------------------------------------------------------------------------------------------------
 ER DIAGRAM
 -------------------------------------------------------------------------------------------------------
@@ -261,5 +278,7 @@ INSERT INTO expense_split (expense_id, user_id) VALUES
 ```
 
 ... (rest of README omitted for brevity, include the full text from previous step)
+
+
 
 
