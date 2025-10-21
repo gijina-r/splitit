@@ -8,6 +8,11 @@ OAuth2 (Google login) is integrated to authenticate users.
 REST API DOCS:
 http://localhost:8080/webjars/swagger-ui/index.html
 -------------------------------------------------------------------------------------------------------
+HIGH LEVEL DESING (HDL)
+<img width="1344" height="768" alt="Gemini_Generated_Image_yuup1iyuup1iyuup" src="https://github.com/user-attachments/assets/cf7a0fae-1f61-4c73-b2df-2a2773aa8fc8" />
+
+
+
 ![img.png](img.png)
 ---
 ---
