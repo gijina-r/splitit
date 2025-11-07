@@ -4,6 +4,47 @@
 SplitIt is a **Spring Boot WebFlux application** for managing shared expenses among users and groups.  
 It supports **user registration, group management, expense tracking, and settlement calculation**.  
 OAuth2 (Google login) is integrated to authenticate users.
+---------------------------------------------------------------------------------------------------------
+Getting Started
+Clone the repository:
+git clone https://github.com/yourusername/splitit.git
+Navigate to the project directory:
+cd splitit
+Build the project:
+mvn clean install
+Run the application:
+mvn spring-boot:run
+---------------------------------------------------------------------------------------------------------
+REST API DOCS:
+http://localhost:8080/webjars/swagger-ui/index.html
+------------------------------------------------------------------------------------------------------------
+HIGH LEVEL DESING (HDL)
+------------------------------------------------------------------------------------------------------------
+1. High-level components
+ -API Gateway — validates JWTs (or delegates to Auth Service), rate-limits, and routes requests.
+ -Auth Service / OAuth2 Integration — uses Google OAuth2 to authenticate users and issue application JWTs.
+ -User Service — user profile, roles, preferences.
+ -Group Service — create/manage groups and membership.
+ -Expense Service — CRUD for expenses; split logic; compute share per user.
+ -Settlement / Transaction Service — record payments, update balances atomically.
+DB — relational DB for core data; Redis for caches; optional event bus for async tasks.
+
+<img width="3204" height="1804" alt="image" src="https://github.com/user-attachments/assets/3eb1d026-433b-4535-bc25-abd2b8f9c694" />
+---------------------------------------------------------------------------------------------------------------------------------------
+LOW LEVEL DESING (LLD)
+---------------------------------------------------------------------------------------------------------------------------------------
+Scope: Backend LLD for an expense-sharing application with Google OAuth2 login, role-based security (USER, ADMIN), groups, expenses, balances, and settlement transactions. Tech stack assumed: Java 17+, Spring Boot (WebFlux or WebMVC), Spring Security (OAuth2 + JWT), JPA/Hibernate, MySQL (or Postgres), Redis (optional cache), and RabbitMQ/Kafka (optional async settlement/notifications).
+
+<img width="1444" height="1564" alt="image" src="https://github.com/user-attachments/assets/c4ba719f-3f53-4c18-9250-0bc1541e76cf" />
+---------------------------------------------------------------------------------------------------------------------------------
+This application uses MYSQL. The database connection is configured in the application.properties file:
+
+spring.datasource.url=jdbc:mysql://localhost:3306/dev_app?useSSL=false&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=[YOUR-PASSWORD]
+
+Make sure to replace [YOUR-PASSWORD] with your actual MYSQL database password.
+
 
 <img width="1556" height="2582" alt="Untitled diagram-2025-10-21-035927" src="https://github.com/user-attachments/assets/d02c2cdd-0813-41db-ab91-8315d4824dc8" />
 
